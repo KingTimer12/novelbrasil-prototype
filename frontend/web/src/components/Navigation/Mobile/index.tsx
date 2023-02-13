@@ -1,11 +1,5 @@
-import React, { Component } from "react";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import {
-  HamburgerMenuIcon,
-  DotFilledIcon,
-  CheckIcon,
-  ChevronRightIcon,
-} from "@radix-ui/react-icons";
+
 import {
   List,
   House,
@@ -15,11 +9,11 @@ import {
   SignIn,
 } from "phosphor-react";
 
-interface Props {
+interface ButtonProps {
   name: string;
 }
 
-function ButtonNav({ name }: Props) {
+function ButtonNav({ name }: ButtonProps) {
   const size = 30;
 
   let result = <House size={size} />;
