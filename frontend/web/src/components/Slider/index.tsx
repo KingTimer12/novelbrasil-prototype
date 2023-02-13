@@ -75,14 +75,14 @@ const Slider = () => {
                   <img
                     src={img}
                     key={index}
-                    className="h-[24rem] transition-all ease-out duration-300"
+                    className="lg:h-[24rem] lg:w-[40rem] md:h-[16rem] md:w-[30rem] sm:h-[11rem] sm:w-[20rem] h-[6rem] w-[15rem] transition-all ease-out duration-300"
                     alt="cover"
                   />
                 ) : (
                   <img
                     src={img}
                     key={index}
-                    className="h-[23rem] transition-all ease-out duration-300"
+                    className="lg:h-[23rem] lg:w-[39rem] md:h-[15rem] md:w-[29rem] sm:h-[10rem] sm:w-[19rem] h-[5rem] w-[11rem] transition-all ease-out duration-300"
                     alt="cover"
                   />
                 )}

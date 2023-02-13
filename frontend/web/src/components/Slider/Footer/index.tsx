@@ -4,7 +4,7 @@ function Footer({loaded, instanceRef, currentSlide}: {
     currentSlide: number
 }) {
   return (
-    <div className="absolute justify-center items-center ml-[36.563rem]">
+    <div className="hidden md:flex justify-center items-center -ml-[0.75rem]">
       {loaded && instanceRef.current && (
         <div className="flex m-5 p-1 cursor-pointer">
           {[
