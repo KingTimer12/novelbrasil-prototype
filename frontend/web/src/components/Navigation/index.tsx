@@ -1,106 +1,98 @@
-import {
-  List,
-  House,
-  BookOpen,
-  PencilSimple,
-  UserPlus,
-  SignIn,
-} from "phosphor-react";
+import { UserPlus } from "phosphor-react";
 
 import { useState } from "react";
-import Mobile from "./Mobile";
 
-interface Props {
+import Menu from "./Menu";
+import BarFixed from "./BarFixed";
+
+interface ButtonProps {
   pageName: string;
+  dark: boolean;
 }
 
-function ButtonNav({ pageName }: Props) {
-  const size = 24;
-
-  let result = <House size={size} className="mb-1.5" />;
-  switch (pageName) {
-    case "novels":
-      result = <BookOpen size={size} className="mb-1.5" />;
-      break;
-    case "editoria":
-      result = <PencilSimple size={size} className="mb-1.5" />;
-      break;
-    case "entrar":
-      result = <SignIn size={size} className="mb-1" />;
-      break;
-    default:
-      break;
-  }
-
+export function ButtonNav({ pageName, dark }: ButtonProps) {
   return (
     <a
       href="#"
-      className="flex flex-row gap-1 justify-center items-center capitalize py-5 px-3 text-zinc-300 font-semibold hover:text-zinc-50 transition-colors ease-out duration-200"
+      className={`flex flex-row gap-1 justify-center items-center capitalize py-5 px-3 font-semibold ${dark ? 'text-zinc-200 hover:text-orange-600' : 'text-zinc-500 hover:text-orange-600'} transition-colors ease-out duration-200`}
     >
-      {result}
       {pageName}
     </a>
   );
 }
 
-function Navigation() {
-  const [menuMobile, setMenuMobile] = useState(false);
+interface Props {
+  genders: string[];
+  dark: boolean;
+}
 
-  const handleMenuMobile = () => {
-    setMenuMobile(!menuMobile);
-  };
+function Navigation({ genders, dark }: Props) {
+  const [navbar, setNavbar] = useState(true);
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= 77) {
+      setNavbar(false);
+    } else {
+      setNavbar(true);
+    }
+  });
 
   return (
-    <nav className="bg-[#B42A2A]">
-      <div className="px-8 mx-auto">
-        <div className="flex justify-around items-center">
-          {/* Computador Menu */}
-          {/*Logo*/}
-          <a href="#" className="flex items-center py-5 -translate-y-0.5">
-            <img src="/assets/logo.png" alt="logo" className="h-9 w-9" />
-          </a>
+    <div>
+      <nav className={`${dark ? 'bg-[#100F10]' : ''} shadow-md`}>
+        <div className="mx-auto">
+          <div className="flex justify-around items-center">
+            {/* Computador Menu */}
 
-          {/*Nav Primaria*/}
-          <div className="hidden md:flex items-center space-x-1.5">
-            <div className="flex justify-around items-center">
-              <ButtonNav pageName="home" />
-              <ButtonNav pageName="novels" />
-              <ButtonNav pageName="editoria" />
+            {/*Nav Primaria*/}
+            <div className="hidden md:flex items-center space-x-1">
+              {/*Logo*/}
+              <a href="#" className="flex items-center py-5 -translate-y-0.5">
+                <img src="/assets/logo.png" alt="logo" className="h-9 w-9" />
+              </a>
+
+              <div className="flex justify-around items-center mt-1">
+                <Menu dark={dark} genders={genders} />
+
+                <ButtonNav dark={dark} pageName="ranking" />
+                <ButtonNav dark={dark} pageName="editoria" />
+              </div>
+            </div>
+
+            {/*Nav Secundaria*/}
+            <div className="hidden md:flex justify-around mt-1 items-center space-x-2">
+              <ButtonNav dark={dark} pageName="entrar" />
+              <a
+                href="#"
+                className="relative rounded px-2 py-2 overflow-hidden text-white group bg-[#FF7024] hover:bg-gradient-to-r hover:from-[#FF7024] hover:to-[#FF7B35] hover:ring-2 hover:ring-offset-2 hover:ring-[#FF7B35] transition-all ease-out duration-300"
+              >
+                <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
+                <div className="flex justify-center items-center gap-1">
+                  <UserPlus size={24} className="mb-0.5" />
+                  <span className="relative">Registrar</span>
+                </div>
+              </a>
+            </div>
+
+            {/* Mobile Button */}
+            <div className="md:hidden flex items-center">
+              {/*Logo*/}
+              <a href="#" className="flex items-center py-5 -translate-y-0.5">
+                <img src="/assets/logo.png" alt="logo" className="h-9 w-9" />
+              </a>
             </div>
           </div>
-
-          {/*Nav Secundaria*/}
-          <div className="hidden md:flex justify-around items-center space-x-2">
-            <ButtonNav pageName="entrar" />
-            <a
-              href="#"
-              className="relative rounded px-2 py-2 overflow-hidden text-white group bg-[#FF7024] hover:bg-gradient-to-r hover:from-[#FF7024] hover:to-[#FF7B35] hover:ring-2 hover:ring-offset-2 hover:ring-[#FF7B35] transition-all ease-out duration-300"
-            >
-              <span className="absolute right-0 w-8 h-32 -mt-12 transition-all duration-1000 transform translate-x-12 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span>
-              <div className="flex justify-center items-center gap-1">
-                <UserPlus size={24} className="mb-0.5" />
-                <span className="relative">Registrar</span>
-              </div>
-            </a>
-          </div>
-
-          {/* Mobile Button */}
-          <div className="md:hidden flex items-center">
-            <Mobile />
-          </div>
         </div>
-      </div>
+      </nav>
 
-      {/* Mobile Menu
-      
-      <div className={!menuMobile ? 'hidden' : ''}>
-        <a href="#" className="block py-2 px-4 text-sm text-zinc-500 rounded-sm hover:text-white hover:bg-[#3577ff] transition-all ease-out duration-100">Home</a>
-        <a href="#" className="block py-2 px-4 text-sm text-zinc-500 rounded-sm hover:text-white hover:bg-[#3577ff] transition-all ease-out duration-100">Novels</a>
-        <a href="#" className="block py-2 px-4 text-sm text-zinc-500 rounded-sm hover:text-white hover:bg-[#3577ff] transition-all ease-out duration-100">Editoria</a>
+      <div
+        className={
+          `md:hidden flex`
+        }
+      >
+        <BarFixed navbar={navbar} />
       </div>
-      
-      */}
-    </nav>
+    </div>
   );
 }
 

@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+[data-color-scheme="dark"] {
+  color-scheme: dark;
+}
+
+[data-color-scheme="light"] {
+  color-scheme: light;
+}
+
+.bar {
+  width: 28px;
+  height: 3px;
+  background-color: black;
+  border-radius: 4px;
+  transition: 0.5s;
+}
+
+.bar:nth-child(1) {
+  transform: translateY(-0.625rem);
+}
+
+.bar:nth-child(2) {
+  transform: translateY(0.625rem);
+}
+
+.bar.active:nth-child(1) {
+  transform: translateY(0) rotate(45deg);
+}
+
+.bar.active:nth-child(2) {
+  transform: translateY(0) rotate(-45deg);
+}
+
+.bar.active:nth-child(3) {
+  transform: translateX(3.75rem);
+}
