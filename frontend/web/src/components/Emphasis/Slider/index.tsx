@@ -9,7 +9,7 @@ interface ItemProps {
 }
 function ListItem({ link, rounter }: ItemProps) {
   return (
-    <div className="keen-slider__slide rounded">
+    <div className="keen-slider__slide rounded-lg">
       <a href={rounter}>
         <img src={link} alt="cover" className="animate-scaleDownCenter" />
       </a>
@@ -74,10 +74,11 @@ const Slider = ({ urls, dark }: Props) => {
 
   return (
     <div>
+
       {/*Slider*/}
       <div
         ref={sliderRef}
-        className="keen-slider left-10 relative box-content flex w-full max-w-[45.7rem] rounded"
+        className="keen-slider left-9 relative box-content flex w-full max-w-[45.7rem] rounded-lg"
       >
         {urls.map((url) => (
           <ListItem key={url} link={url} rounter="#" />

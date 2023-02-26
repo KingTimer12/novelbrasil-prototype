@@ -6,7 +6,7 @@ import Novels from "../../components/Novels";
 
 const Home = () => {
   const [novels, setNovels] = useState<Novel[]>([]);
-  const [dark, setDark] = useState(false)
+  const [dark, setDark] = useState(true)
 
   const genders = [
     "Ação",

@@ -16,7 +16,7 @@ function NewsList({ dark, thumbnail, title, date, author }: NewsProps) {
         <img
           src={thumbnail}
           alt="thumbnail"
-          className="float-left inline-block ml-3 mr-2 w-28 h-16 rounded"
+          className="float-left inline-block ml-3 mr-2 w-28 h-16 rounded-lg"
         />
         <div className="mt-1">
           <h4 className={`break-words tracking-tight font-semibold ${dark ? 'text-white' : ''}`}>

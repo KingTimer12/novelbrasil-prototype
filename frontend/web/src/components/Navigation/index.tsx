@@ -41,7 +41,7 @@ function Navigation({ genders, dark }: Props) {
     <div>
       <nav className={`${dark ? 'bg-[#100F10]' : ''} shadow-md`}>
         <div className="mx-auto">
-          <div className="flex justify-around items-center">
+          <div className="flex justify-between items-center mr-12 ml-[3.5rem]">
             {/* Computador Menu */}
 
             {/*Nav Primaria*/}
